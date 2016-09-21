@@ -1,0 +1,82 @@
+#Define route to the main page of the AAI MovieShare site
+
+proof_api.all_videos:
+  path: '/all_videos'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::allVideos'
+    _title: "All Videos"
+  requirements:
+    _permission: 'access content'
+
+proof_api.top_ten_by_views:
+  path: '/top_ten_by_views'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::topTenByViews'
+    _title: "Top Ten Most-Viewed Videos"
+  requirements:
+    _permission: 'access content'
+
+proof_api.top_ten_by_votes:
+  path: '/top_ten_by_votes'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::topTenByVotes'
+    _title: "Top Ten Most-Voted Videos"
+  requirements:
+    _permission: 'access content'
+
+proof_api.new_video:
+#  path: '/new_video/ajax'
+  path: '/new_video'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::newVideo'
+    _title: "Post New Video"
+  requirements:
+    _permission: 'access content'
+
+proof_api.new_video_form:
+  path: '/new_video_form'
+  defaults:
+    _title: 'Post a New Video'
+    _form: '\Drupal\proof_api\ProofAPIForms\NewVideoForm'
+  requirements:
+    _permission: 'access content'
+
+proof_api.vote_up:
+  path: '/vote_up/ajax/{videoID}/{voteID}'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::voteUpOne'
+    _title: "Vote Up"
+  requirements:
+    _permission: 'access content'
+
+proof_api.vote_down:
+  path: '/vote_down/ajax/{videoID}/{voteID}'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::voteDownOne'
+    _title: "Vote Down"
+  requirements:
+    _permission: 'access content'
+
+proof_api.view_video:
+  path: '/view_video/{videoID}'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::viewVideo'
+    _title: "Watch a Video"
+  requirements:
+    _permission: 'access content'
+
+proof_api.new_view:
+  path: '/new_view/ajax/{videoID}/{viewID}'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::newView'
+    _title: "Log a View"
+  requirements:
+    _permission: 'access content'
+
+proof_api.home:
+  path: '/now_playing'
+  defaults:
+    _controller: '\Drupal\proof_api\Controller\ProofAPIController::nowPlaying'
+    _title: "Welcome to AAI VideoShare"
+  requirements:
+    _permission: 'access content'
