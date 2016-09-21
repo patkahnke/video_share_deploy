@@ -56,6 +56,10 @@ class ProofAPIUtilities {
       '#videos' => $videos,
       '#title' => $title,
       '#theme' => 'videos',
+      '#cache' => array
+      (
+        '#max-age' => 0,
+      ),
     );
 
     /**
@@ -84,7 +88,7 @@ class ProofAPIUtilities {
       '#redirectTo' => $redirect,
       '#cache' => array
       (
-        'max-age' => $cache,
+        '#max-age' => 300,
       ),
     );
 
@@ -111,6 +115,10 @@ class ProofAPIUtilities {
         '#videos' => $videos,
         '#theme' => 'top_ten_block',
         '#attached' => ['library' => ['proof_api/proof-api']],
+        '#cache' => array
+        (
+          '#max-age' => 0,
+        ),
       );
     }
 

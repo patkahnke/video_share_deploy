@@ -2,15 +2,6 @@
 
      'use strict';
 
-     /*@todo Figure out why this method of using a callback function to redirect to the new video form isn't working. Would prefer
-      this method rather than have the user go all the way to the form before finding out it doesn't work on weekends.
-      Attaches a custom AJAX callback command, "newVideoForm," to the AjaxCommands object, which gets called
-      by the "newVideo" controller function. Triggers a link to the new video form.
-      */
-     /*Drupal.AjaxCommands.prototype.newVideoForm = function(ajax, response, status) {
-         $(this).closest('#video--container').find('.new-video-form').trigger('click');
-     };*/
-
      /*
      Attaches a custom AJAX callback command, "view," to the AjaxCommands object, which gets called
      by the "addView" controller function. Updates the DOM with new number of views.
@@ -55,7 +46,6 @@
                      var voteID = 'vote' + i;
                      var viewID = 'view' + i;
                      var overlay = videos[i].attributes.overlay;
-                         console.log(videos[i].attributes.embedURL);
 
                      $('#video-container').append(
                          '<div class="individual-container">' +
@@ -69,7 +59,6 @@
                             + videoID + '/' + voteID + '">Vote Up</a></td>' +
                          '<td class="votes-views"><a class="vote-down-button use-ajax" href="http://videoshare1gryybmkx6r.devcloud.acquia-sites.com/vote_down/ajax/'
                             + videoID + '/' + voteID + '">Vote Down</a><td>' +
-                         // Saving this link for reference to the failed newVideoForm callback. '<td class="votes-views"><a class="add-video-button use-ajax" href="http://aai-video-share.dd:8083/new_video/ajax/">Add a Video!</a>' +
                          '</table>' +
 
                          //the overlay variable allows for the page to be built without an overlay when sidebar video links are clicked
