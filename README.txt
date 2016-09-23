@@ -13,7 +13,7 @@ Video Share Features
 ======================
 Authentication:
  - Because the app is designed for the employees of a specific company, all users must be
- pre-registered by a site administrator
+    pre-registered by a site administrator
  - To access the development version of this site, go to:
     - http://videoshare1gryybmkx6r.devcloud.acquia-sites.com/
     - username: johnsmith
@@ -44,8 +44,8 @@ Add Video Form returns user-friendly error responses if validation shows the fol
  - The slug is in the proper format
 
 Caching:
- - The three pages with lists of embedded videos are cached for a maximum of five minutes, otherwise pages are
-    not cached, in order to provide the most up-to-date information available.
+ - The three pages with lists of embedded videos are cached for a maximum of five minutes,
+    otherwise pages are not cached, in order to provide the most up-to-date information available.
 
 Voting:
  - Each user is allowed to vote once per day per video
@@ -65,4 +65,4 @@ September 7, 2016
 
 ReadMe Updated On
 =======================
-September 22, 2016
+September 23, 2016
