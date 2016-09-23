@@ -57,7 +57,7 @@ class MostRecentVideosBlock extends BlockBase implements ContainerFactoryPluginI
   {
     $videos = $this->proofAPIRequests->getAllVideos();
     $videos = $this->proofAPIUtilities->sortAndPrepVideos($videos, 'created_at', 'overlay', 10);
-    $build = $this->proofAPIUtilities->buildVideoListBlockPage($videos, 'Most Recent Videos');
+    $build = $this->proofAPIUtilities->buildVideoListBlockPage($videos, 'Most Recent');
 
     return $build;
   }

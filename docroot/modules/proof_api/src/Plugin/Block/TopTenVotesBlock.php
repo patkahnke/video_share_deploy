@@ -56,7 +56,7 @@ class TopTenVotesBlock extends BlockBase implements ContainerFactoryPluginInterf
   {
     $videos = $this->proofAPIRequests->getAllVideos();
     $videos = $this->proofAPIUtilities->sortAndPrepVideos($videos, 'vote_tally', 'overlay', 10);
-    $build = $this->proofAPIUtilities->buildVideoListBlockPage($videos, 'Highest Voted Videos');
+    $build = $this->proofAPIUtilities->buildVideoListBlockPage($videos, 'Highest Voted');
 
     return $build;
   }
