@@ -12,8 +12,8 @@ Please see the README.txt file in the Proof API module for a detailed descriptio
 Video Share Features
 ======================
 Authentication:
- - Because the app is designed for the employees of a specific company, all users must be pre-registered
-    by a site administrator
+ - Because the app is designed for the employees of a specific company, all users must be
+ pre-registered by a site administrator
  - To access the development version of this site, go to:
     - http://videoshare1gryybmkx6r.devcloud.acquia-sites.com/
     - username: johnsmith
