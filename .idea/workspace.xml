@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e73ac5a5-2402-4f1a-9834-1dcbee895173" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docroot/modules/proof_api/src/Ajax/NewVideoFormCommand.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docroot/modules/proof_api/src/Plugin/Block/NowPlayingBlock.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docroot/modules/proof_api/proof_api.routing.yml" afterPath="$PROJECT_DIR$/docroot/modules/proof_api/proof_api.routing.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docroot/modules/proof_api/proof_api.services.yml" afterPath="$PROJECT_DIR$/docroot/modules/proof_api/proof_api.services.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docroot/modules/proof_api/src/Controller/ProofAPIController.php" afterPath="$PROJECT_DIR$/docroot/modules/proof_api/src/Controller/ProofAPIController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docroot/modules/proof_api/src/Form/NewVideoForm.php" afterPath="$PROJECT_DIR$/docroot/modules/proof_api/src/Form/NewVideoForm.php" />
     </list>
     <ignored path="videoshare1-dev.iws" />
@@ -45,8 +40,8 @@
       <file leaf-file-name="NewVideoForm.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/docroot/modules/proof_api/src/Form/NewVideoForm.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
+            <state relative-caret-position="381">
+              <caret line="109" column="15" selection-start-line="109" selection-start-column="15" selection-end-line="109" selection-end-column="15" />
               <folding>
                 <element signature="e#7#76#0#PHP" expanded="true" />
                 <element signature="e#112#151#0#PHP" expanded="true" />
@@ -531,12 +526,12 @@
       <workItem from="1474654659095" duration="942000" />
       <workItem from="1474662865778" duration="716000" />
       <workItem from="1474664784488" duration="4140000" />
-      <workItem from="1475002787735" duration="2359000" />
+      <workItem from="1475002787735" duration="2804000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21746000" />
+    <option name="totallyTimeSpent" value="22191000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="815" extended-state="6" />
@@ -847,8 +842,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docroot/modules/proof_api/src/Form/NewVideoForm.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
+        <state relative-caret-position="381">
+          <caret line="109" column="15" selection-start-line="109" selection-start-column="15" selection-end-line="109" selection-end-column="15" />
           <folding>
             <element signature="e#7#76#0#PHP" expanded="true" />
             <element signature="e#112#151#0#PHP" expanded="true" />
