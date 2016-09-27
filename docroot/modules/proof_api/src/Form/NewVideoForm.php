@@ -107,7 +107,7 @@ class NewVideoForm extends FormBase
         $form_state->setErrorByName('url', t('Sorry, the video url is invalid.'));
     } else if ($videosMatch) {
         $form_state->setErrorByName('title', t('Sorry, this appears to be a duplicate video entry.'));
-    } else if (!$slugLowercase) {
+    } else if ($slug && !$slugLowercase) {
         $form_state->setErrorByName('slug', t('Sorry, the slug appears to be in the wrong format.'));
     } else if ($videoOrigin === null) {
         $form_state->setErrorByName('url', t('Sorry, this app only supports YouTube and Vimeo videos at this time.'));
