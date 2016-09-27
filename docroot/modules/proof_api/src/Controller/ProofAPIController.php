@@ -9,7 +9,7 @@ namespace Drupal\proof_api\Controller;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\OpenModalDialogCommand;
 use Drupal\Core\Controller\ControllerBase;
-//use Drupal\proof_api\Ajax\NewVideoFormCommand; Keeping this for reference to revidit this command later
+//use Drupal\proof_api\Ajax\NewVideoFormCommand; Keeping this for reference to revisit this command later
 use Drupal\proof_api\Ajax\ViewCommand;
 use Drupal\proof_api\Ajax\VoteCommand;
 use Drupal\proof_api\ProofAPIRequests\ProofAPIRequests;
