@@ -10,6 +10,7 @@ namespace Drupal\proof_api\Form;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\key\KeyRepository;
 use Drupal\proof_api\ProofAPIRequests\ProofAPIRequests;
 use Drupal\proof_api\ProofAPIUtilities\ProofAPIUtilities;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -21,16 +22,19 @@ class NewVideoForm extends FormBase
 {
   private $proofAPIRequests;
   private $proofAPIUtilities;
+  private $keyRepository;
 
   /**
    * NewVideoForm constructor.
    * @param ProofAPIRequests $proofAPIRequests
    * @param ProofAPIUtilities $proofAPIUtilities
+   * @param KeyRepository $keyRepository
    */
-  public function __construct(ProofAPIRequests $proofAPIRequests, ProofAPIUtilities $proofAPIUtilities)
+  public function __construct(ProofAPIRequests $proofAPIRequests, ProofAPIUtilities $proofAPIUtilities, KeyRepository $keyRepository)
   {
-      $this->proofAPIRequests = $proofAPIRequests;
-      $this->proofAPIUtilities = $proofAPIUtilities;
+    $this->proofAPIRequests = $proofAPIRequests;
+    $this->proofAPIUtilities = $proofAPIUtilities;
+    $this->keyRepository = $keyRepository;
   }
 
   /**
@@ -96,7 +100,8 @@ class NewVideoForm extends FormBase
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $url = $form_state->getValue('url');
     $slug = $form_state->getValue('slug');
-    $response = $this->proofAPIRequests->getAllVideos();
+    $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+    $response = $this->proofAPIRequests->getAllVideos($authKey);
     $slugNoDashes = str_replace('-', '', $slug);
     $slugLowercase = ctype_lower($slugNoDashes);
 
