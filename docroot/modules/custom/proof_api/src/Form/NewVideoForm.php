@@ -145,7 +145,8 @@ class NewVideoForm extends FormBase
   {
     $proofAPIRequests = $container->get('proof_api.proof_api_requests');
     $proofAPIUtilities = $container->get('proof_api.proof_api_utilities');
+    $keyRepository = $container->get('key.repository');
 
-    return new static($proofAPIRequests, $proofAPIUtilities);
+    return new static($proofAPIRequests, $proofAPIUtilities, $keyRepository);
   }
 }
