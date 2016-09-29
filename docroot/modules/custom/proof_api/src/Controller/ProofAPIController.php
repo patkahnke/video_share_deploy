@@ -9,6 +9,7 @@ namespace Drupal\proof_api\Controller;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\OpenModalDialogCommand;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\key\KeyRepository;
 use Drupal\proof_api\Ajax\ViewCommand;
 use Drupal\proof_api\Ajax\VoteCommand;
 use Drupal\proof_api\ProofAPIRequests\ProofAPIRequests;
@@ -22,16 +23,13 @@ class ProofAPIController extends ControllerBase
 {
   private $proofAPIRequests;
   private $proofAPIUtilities;
+  private $keyRepository;
 
-  /**
-   * ProofAPIController constructor.
-   * @param ProofAPIRequests $proofAPIRequests
-   * @param ProofAPIUtilities $proofAPIUtilities
-   */
-  public function __construct(ProofAPIRequests $proofAPIRequests, ProofAPIUtilities $proofAPIUtilities)
+  public function __construct(ProofAPIRequests $proofAPIRequests, ProofAPIUtilities $proofAPIUtilities, KeyRepository $keyRepository)
   {
     $this->proofAPIRequests = $proofAPIRequests;
     $this->proofAPIUtilities = $proofAPIUtilities;
+    $this->keyRepository = $keyRepository;
   }
 
   /**
@@ -44,7 +42,8 @@ class ProofAPIController extends ControllerBase
    */
   public function allVideos()
   {
-    $videos = $this->proofAPIRequests->getAllVideos();
+    $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+    $videos = $this->proofAPIRequests->getAllVideos($authKey);
     $videos = $this->proofAPIUtilities->sortAndPrepVideos($videos, 'created_at', 'overlay', 1000);
     $page = $this->proofAPIUtilities->buildVideoListPage($videos, 'proof_api.all_videos', 0);
 
@@ -61,7 +60,8 @@ class ProofAPIController extends ControllerBase
    */
   public function topTenByViews()
   {
-    $videos = $this->proofAPIRequests->getAllVideos();
+    $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+    $videos = $this->proofAPIRequests->getAllVideos($authKey);
     $videos = $this->proofAPIUtilities->sortAndPrepVideos($videos, 'view_tally', 'overlay', 10);
     $page = $this->proofAPIUtilities->buildVideoListPage($videos, 'proof_api.top_ten_by_views', 300);
 
@@ -78,7 +78,8 @@ class ProofAPIController extends ControllerBase
    */
   public function topTenByVotes()
   {
-    $videos = $this->proofAPIRequests->getAllVideos();
+    $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+    $videos = $this->proofAPIRequests->getAllVideos($authKey);
     $videos = $this->proofAPIUtilities->sortAndPrepVideos($videos, 'vote_tally', 'overlay', 10);
     $page = $this->proofAPIUtilities->buildVideoListPage($videos, 'proof_api.top_ten_by_votes', 300);
 
@@ -112,8 +113,8 @@ class ProofAPIController extends ControllerBase
   {
     $keyValueStore = $this->keyValue('proof_api');
     $videos = array();
-
-    $videos[0] = $this->proofAPIRequests->getVideo($videoID);
+    $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+    $videos[0] = $this->proofAPIRequests->getVideo($videoID, $authKey);
     $video = $this->proofAPIUtilities->sortAndPrepVideos($videos, 'created_at', 'video-box', 1);
 
     $user = \Drupal::currentUser();
@@ -153,7 +154,8 @@ class ProofAPIController extends ControllerBase
 
     if ($currentVideoID === $requestedVideoID) {
 
-      $videos = $this->proofAPIRequests->getAllVideos();
+      $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+      $videos = $this->proofAPIRequests->getAllVideos($authKey);
       $currentVideo = $this->proofAPIUtilities->sortAndPrepVideos($videos, 'created_at', 'overlay', 1);
 
       $currentVideoID = $currentVideo[0]['id'] . $userID;
@@ -168,7 +170,6 @@ class ProofAPIController extends ControllerBase
     } else {
       $requestedVideo = $keyValueStore->get('requestedVideo' . $userID);
       $requestedVideo = $this->proofAPIUtilities->sortAndPrepVideos($requestedVideo, 'created_at', 'video-box', 1);
-
       $currentVideo = $keyValueStore->get('currentVideo' . $userID);
       $currentVideoID = $keyValueStore->get('currentVideoID' . $userID);
       $keyValueStore->set('requestedVideo' . $userID, $currentVideo);
@@ -204,15 +205,16 @@ class ProofAPIController extends ControllerBase
     $response = new AjaxResponse();
 
     if ($voteCheck === $today) {
-        $title = 'Sorry - you have already voted on this video today';
-        $content = array (
-          '#attached' => ['library' => ['core/drupal.dialog.ajax']],
-        );
-        $response->addCommand(new OpenModalDialogCommand($title, $content));
-      } else {
+      $title = 'Sorry - you have already voted on this video today';
+      $content = array (
+        '#attached' => ['library' => ['core/drupal.dialog.ajax']],
+      );
+      $response->addCommand(new OpenModalDialogCommand($title, $content));
+    } else {
 
-      $this->proofAPIRequests->postNewVoteUp($videoID);
-      $newVideoData = $this->proofAPIRequests->getAllVideos();
+      $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+      $this->proofAPIRequests->postNewVoteUp($videoID, $authKey);
+      $newVideoData = $this->proofAPIRequests->getAllVideos($authKey);
 
       for ($i = 0; $i < count($newVideoData); $i++) {
         if ($newVideoData[$i]['id'] === $videoID) {
@@ -259,8 +261,9 @@ class ProofAPIController extends ControllerBase
 
     } else {
 
-      $this->proofAPIRequests->postNewVoteDown($videoID);
-      $newVideoData = $this->proofAPIRequests->getAllVideos();
+      $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+      $this->proofAPIRequests->postNewVoteDown($videoID, $authKey);
+      $newVideoData = $this->proofAPIRequests->getAllVideos($authKey);
 
       for ($i = 0; $i < count($newVideoData); $i++) {
         if ($newVideoData[$i]['id'] === $videoID) {
@@ -283,12 +286,15 @@ class ProofAPIController extends ControllerBase
    * Returns an AJAX response containing the new view tally, as well as the "view" callback command which updates the DOM.
    * @param $videoID
    * @param $viewID
+   * @param $authKey
    * @return AjaxResponse
    */
   public function newView($videoID, $viewID)
   {
-    $this->proofAPIRequests->postNewView($videoID);
-    $videoData = $this->proofAPIRequests->getAllVideos();
+    $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+
+    $this->proofAPIRequests->postNewView($videoID, $authKey);
+    $videoData = $this->proofAPIRequests->getAllVideos($authKey);
     $viewTally = null;
 
     for ($i = 0; $i < count($videoData); $i++) {
@@ -312,6 +318,7 @@ class ProofAPIController extends ControllerBase
   {
     $proofAPIRequests = $container->get('proof_api.proof_api_requests');
     $proofAPIUtilities = $container->get('proof_api.proof_api_utilities');
-    return new static($proofAPIRequests, $proofAPIUtilities);
+    $keyRepository = $container->get('key.repository');
+    return new static($proofAPIRequests, $proofAPIUtilities, $keyRepository);
   }
 }
