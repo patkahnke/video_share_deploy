@@ -340,7 +340,7 @@ class ProofAPIController extends ControllerBase
   }
 
   /**
-   * Gets the ProofAPIRequests and ProofAPIUtilities services from the services container
+   * Gets the ProofAPIRequests, ProofAPIUtilities, and KeyRepository services from the services container
    * @param ContainerInterface $container
    * @return static
    */
