@@ -98,10 +98,11 @@ class NewVideoForm extends FormBase
    * @param FormStateInterface $form_state
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
+    $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
+    $route = 'videos?page&per_page';
     $url = $form_state->getValue('url');
     $slug = $form_state->getValue('slug');
-    $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
-    $response = $this->proofAPIRequests->getAllVideos($authKey);
+    $response = $this->proofAPIRequests->getCurl($authKey, $route);
     $slugNoDashes = str_replace('-', '', $slug);
     $slugLowercase = ctype_lower($slugNoDashes);
 
@@ -109,13 +110,13 @@ class NewVideoForm extends FormBase
     $videoOrigin = $this->proofAPIUtilities->checkVideoOrigin($url);
 
     if (!UrlHelper::isValid($url, TRUE)) {
-        $form_state->setErrorByName('url', t('Sorry, the video url is invalid.'));
+      $form_state->setErrorByName('url', t('Sorry, the video url is invalid.'));
     } else if ($videosMatch) {
-        $form_state->setErrorByName('title', t('Sorry, this appears to be a duplicate video entry.'));
+      $form_state->setErrorByName('title', t('Sorry, this appears to be a duplicate video entry.'));
     } else if (!$slugLowercase) {
-        $form_state->setErrorByName('slug', t('Sorry, the slug appears to be in the wrong format.'));
+      $form_state->setErrorByName('slug', t('Sorry, the slug appears to be in the wrong format.'));
     } else if ($videoOrigin === null) {
-        $form_state->setErrorByName('url', t('Sorry, this app only supports YouTube and Vimeo videos at this time.'));
+      $form_state->setErrorByName('url', t('Sorry, this app only supports YouTube and Vimeo videos at this time.'));
     } else if (date('N') > 5) {
       $form_state->setErrorByName('title', t('Sorry, you cannot post videos on weekends.'));
     }
