@@ -131,7 +131,16 @@ class NewVideoForm extends FormBase
     $url = $form_state->getValue('url');
     $slug = $form_state->getValue('slug');
     $authKey = $this->keyRepository->getKey('proof_api')->getKeyValue();
-    $this->proofAPIRequests->postNewMovie($title, $url, $slug, $authKey);
+    $routeID = 'videos';
+    $postDataKey1 = 'title';
+    $postDataValue1 = $title;
+    $postDataKey2 = 'url';
+    $postDataValue2 = $url;
+    $postDataKey3 = 'slug';
+    $postDataValue3 = $slug;
+
+    $this->proofAPIRequests->postCurl($authKey, $routeID, $postDataKey1, $postDataValue1, $postDataKey2,
+      $postDataValue2, $postDataKey3, $postDataValue3);
 
     $form_state->setRedirect('proof_api.home');
     return;
