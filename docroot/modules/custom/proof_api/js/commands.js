@@ -52,12 +52,12 @@
                          '<table>' +
 
                          //video stats info and voting buttons
-                         '<a class="add-view use-ajax" href="http://videoshare1gryybmkx6r.devcloud.acquia-sites.com/new_view/ajax/' + videoID + '/' + viewID + '"></a>' +
+                         '<a class="add-view use-ajax" href="/new_view/ajax/' + videoID + '/' + viewID + '"></a>' +
                          '<td class="votes-views ' + viewID + '">Views: ' + viewTally + '</td>' +
                          '<td class="votes-views ' + voteID + '">Votes: ' + voteTally + '</td>' +
-                         '<td class="votes-views"><a class="vote-up-button use-ajax" href="http://videoshare1gryybmkx6r.devcloud.acquia-sites.com/vote_up/ajax/'
+                         '<td class="votes-views"><a class="vote-up-button use-ajax" href="/vote_up/ajax/'
                             + videoID + '/' + voteID + '">Vote Up</a></td>' +
-                         '<td class="votes-views"><a class="vote-down-button use-ajax" href="http://videoshare1gryybmkx6r.devcloud.acquia-sites.com/vote_down/ajax/'
+                         '<td class="votes-views"><a class="vote-down-button use-ajax" href="/vote_down/ajax/'
                             + videoID + '/' + voteID + '">Vote Down</a><td>' +
                          '</table>' +
 
