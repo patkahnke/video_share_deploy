@@ -33,7 +33,6 @@
          "Once" method ensures that this only happens on initial page load.
          "Context" is the entire page on initial load, but is restricted to only newly updated DOM elements on updates.
          "VideoArray" variable was attached to "Settings" in the controller function that built the page.
-         @todo Find a better way to call the "newView," "voteUp," and "voteDown" controller functions, instead of the long urls.
           */
          attach: function (context, settings) {
              $('#video-container').once('proofAPIModifyDom').each(function () {

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e73ac5a5-2402-4f1a-9834-1dcbee895173" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docroot/modules/custom/proof_api/README.txt" afterPath="$PROJECT_DIR$/docroot/modules/custom/proof_api/README.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docroot/modules/custom/proof_api/js/commands.js" afterPath="$PROJECT_DIR$/docroot/modules/custom/proof_api/js/commands.js" />
     </list>
     <ignored path="videoshare1-dev.iws" />
@@ -27,11 +27,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="commands.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="commands.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docroot/modules/custom/proof_api/js/commands.js">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="44" column="45" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docroot/modules/custom/proof_api/README.txt">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="330">
-              <caret line="59" column="110" selection-start-line="59" selection-start-column="110" selection-end-line="59" selection-end-column="110" />
+              <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -70,6 +80,7 @@
         <option value="$PROJECT_DIR$/docroot/modules/custom/proof_api/src/Plugin/Block/TopTenViewsBlock.php" />
         <option value="$PROJECT_DIR$/docroot/modules/custom/proof_api/src/Plugin/Block/TopTenVotesBlock.php" />
         <option value="$PROJECT_DIR$/docroot/modules/custom/proof_api/js/commands.js" />
+        <option value="$PROJECT_DIR$/docroot/modules/custom/proof_api/README.txt" />
       </list>
     </option>
   </component>
@@ -498,12 +509,12 @@
       <workItem from="1474664784488" duration="4140000" />
       <workItem from="1475002787735" duration="3222000" />
       <workItem from="1475099761793" duration="9256000" />
-      <workItem from="1475538775052" duration="5834000" />
+      <workItem from="1475538775052" duration="6108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37699000" />
+    <option name="totallyTimeSpent" value="37973000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="817" extended-state="6" />
@@ -713,13 +724,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docroot/modules/README.txt" />
     <entry file="file://$PROJECT_DIR$/README.acquia" />
-    <entry file="file://$PROJECT_DIR$/docroot/modules/custom/proof_api/README.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docroot/modules/custom/proof_api/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
@@ -871,8 +875,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docroot/modules/custom/proof_api/js/commands.js">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="44" column="45" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docroot/modules/custom/proof_api/README.txt">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
-          <caret line="59" column="110" selection-start-line="59" selection-start-column="110" selection-end-line="59" selection-end-column="110" />
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
           <folding />
         </state>
       </provider>
